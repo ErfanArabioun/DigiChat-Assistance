@@ -45,7 +45,7 @@ Dependencies listed in requirements.txt
 Installation
 
 Clone the repository:
-git clone https://github.com/your-username/DigiChat-Assistance.git
+git clone https://github.com/ErfanArabioun/DigiChat-Assistance.git
 cd DigiChat-Assistance
 
 
@@ -109,4 +109,4 @@ HooshvareLab for the Persian BERT model.
 Streamlit for the awesome web app framework.
 
 
-⭐ If you find this project helpful, give it a star on GitHub!For questions or feedback, contact your-email@example.com or open an issue.
+⭐ If you find this project helpful, give it a star on GitHub!For questions or feedback, contact arabiounerfan@gmail.com or open an issue.
