@@ -1,4 +1,4 @@
-DigiChat Assistance
+# DigiChat Assistance
 
 ![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
 ![Streamlit](https://img.shields.io/badge/Streamlit-1.38.0-red.svg)
@@ -6,126 +6,138 @@ DigiChat Assistance
 ![Transformers](https://img.shields.io/badge/Transformers-4.44.2-orange.svg)
 ![PyTorch](https://img.shields.io/badge/PyTorch-2.4.1-blue.svg)
 
- 
-Welcome to DigiChat Assistance, an intelligent tool designed to automate answering frequently asked questions (FAQs) from Digikala, Iran's leading e-commerce platform. Powered by web scraping, Persian NLP, and a sleek Streamlit web interface, this project uses BERT-based embeddings to provide accurate and instant responses to customer queries in Persian.
-Table of Contents
+> **DigiChat Assistance** is an intelligent Persian-language FAQ assistant for [Digikala](https://www.digikala.com/), Iran’s largest e-commerce platform. It automates question answering using BERT-based semantic search, a user-friendly Streamlit interface, and web scraping techniques.
 
-Features
-Project Structure
-Prerequisites
-Installation
-Usage
-Technologies Used
-Future Improvements
-Contributing
-Contact
-License
+---
 
-Features
+## 🧠 Features
 
-Web Scraping: Automatically collects FAQs, answers, and related links from Digikala's website.
-Keyword Extraction: Enhances searchability by extracting key terms from questions using a Persian BERT model.
-Semantic Search: Uses cosine similarity and BERT embeddings to find the most relevant answer to user queries.
-User-Friendly Interface: A Streamlit web app for seamless interaction, allowing users to input questions and receive instant answers.
-Persian Language Support: Tailored for Persian text processing with a custom stop words list and a Persian BERT model.
+* **Web Scraping**: Automatically gathers FAQs, answers, and links from Digikala.
+* **Keyword Extraction**: Extracts keywords using Persian BERT for enhanced semantic understanding.
+* **Semantic Search**: Uses BERT embeddings and cosine similarity to deliver the most relevant answers.
+* **Persian NLP**: Tailored for Persian with custom preprocessing and stop words.
+* **Streamlit Interface**: Lightweight and intuitive interface for real-time Q\&A.
 
-Project Structure
-The project is organized into three main components:
+---
+
+## 📁 Project Structure
+
+```
 DigiChat-Assistance/
-├── Crawler/
-│   └── Digikala_FAQ_Crawler_FullExtraction.py  # Scrapes FAQs from Digikala
-├── Preprocessing/
-│   └── Keywords_Generating.py                  # Extracts keywords from questions
 ├── App/
-│   ├── app.py                                 # Streamlit web application
-│   └── Embedding.py                           # Generates BERT embeddings
-├── Persian_Stop_Words.txt                     # Persian stop words for preprocessing
-├── FAQ_Dataset.xlsx                           # Generated FAQ data
-├── faq_embeddings.npy                         # Generated BERT embeddings
-└── requirements.txt                           # Project dependencies
+│   ├── app.py                      # Streamlit web app
+│   └── Embedding.py                # BERT embedding generator
+├── Crawler/
+│   └── Digikala_FAQ_Crawler_FullExtraction.py
+├── Preprocessing/
+│   └── Keywords_Generating.py      # Extracts keywords from FAQs
+├── Persian_Stop_Words.txt          # Persian stopwords for preprocessing
+├── FAQ_Dataset.xlsx                # Collected FAQs
+├── faq_embeddings.npy              # BERT-based semantic vectors
+├── requirements.txt                # Dependencies
+```
 
-Prerequisites
+---
 
-Python 3.8+
-Google Chrome (for Selenium web scraping)
-ChromeDriver compatible with your Chrome version
-Internet connection for scraping and model downloads
+## ✅ Prerequisites
 
-Installation
+* Python >= 3.8
+* Google Chrome + matching [ChromeDriver](https://sites.google.com/chromium.org/driver/)
+* Internet connection (for scraping and model downloads)
 
-Clone the repository:
+---
+
+## ⚙️ Installation
+
+```bash
 git clone https://github.com/ErfanArabioun/DigiChat-Assistance.git
 cd DigiChat-Assistance
-
-
-Install dependencies:
 pip install -r requirements.txt
+```
 
+> ⚠️ Make sure ChromeDriver is installed and available in your system's PATH or update the path in `Digikala_FAQ_Crawler_FullExtraction.py`.
 
-Install ChromeDriver:
+---
 
-Download the appropriate ChromeDriver version for your Chrome browser.
-Place it in your system PATH or specify its location in Digikala_FAQ_Crawler_FullExtraction.py.
+## 🚀 Usage
 
+1. **Scrape FAQs**:
 
+   ```bash
+   python Crawler/Digikala_FAQ_Crawler_FullExtraction.py
+   ```
 
-Usage
+2. **Generate Keywords**:
 
-Collect FAQs:Scrape Digikala's FAQs:
-python Crawler/Digikala_FAQ_Crawler_FullExtraction.py
+   ```bash
+   python Preprocessing/Keywords_Generating.py
+   ```
 
-Output: DIGIKALA_FAQ_ALL.csv
+3. **Create Embeddings**:
 
-Generate Keywords:Extract keywords from questions:
-python Preprocessing/Keywords_Generating.py
+   ```bash
+   python App/Embedding.py
+   ```
 
-Output: DIGIKALA_FAQ_KEYWORDS.csv
+4. **Run the App**:
 
-Create Embeddings:Generate BERT embeddings for FAQs:
-python App/Embedding.py
+   ```bash
+   streamlit run App/app.py
+   ```
 
-Output: faq_embeddings.npy
+   Open the provided URL (e.g., `http://localhost:8501`) and ask your question in Persian!
 
-Run the Web App:Launch the Streamlit app:
-streamlit run App/app.py
+---
 
-Open the provided URL (e.g., http://localhost:8501) in your browser, enter a Persian question, and get the most relevant answer.
+## 🛠️ Technologies Used
 
+* **Python 3.8+** – Base programming language
+* **Selenium** – Web scraping automation
+* **Transformers (Hugging Face)** – Persian BERT: `HooshvareLab/bert-fa-base-uncased`
+* **PyTorch** – Deep learning framework
+* **Streamlit** – Web UI
+* **Pandas & NumPy** – Data manipulation
+* **Scikit-learn** – Cosine similarity for semantic search
 
-Technologies Used
+---
 
-Python 3.8+: Core programming language.
-Selenium: For scraping Digikala's FAQ pages.
-Transformers (Hugging Face): Persian BERT model (HooshvareLab/bert-fa-base-uncased) for NLP tasks.
-PyTorch: Backend for running BERT models.
-Streamlit: For building the interactive web application.
-Pandas & NumPy: For data manipulation and storage.
-Scikit-learn: For cosine similarity calculations.
+## 🌱 Future Roadmap
 
-Future Improvements
+* 🌤 Multilingual support
+* 🎨 Improved UI/UX with styling and animations
+* 🔄 Live scraping with periodic FAQ updates
+* ⚡ Faster embedding generation via optimization
 
-Support for multi-lingual FAQ processing.
-Enhanced UI with advanced styling and visualizations.
-Real-time FAQ updates from Digikala's website.
-Optimization of embedding generation for faster response times.
+---
 
-Contributing
-We welcome contributions! To contribute:
+## 🤝 Contributing
 
-Fork the repository.
-Create a new branch (git checkout -b feature/your-feature).
-Make your changes and commit (git commit -m "Add your feature").
-Push to the branch (git push origin feature/your-feature).
-Open a Pull Request.
+Contributions are welcome! Here's how to contribute:
 
-For major changes, please open an issue first to discuss your ideas.
-Contact
-For questions or feedback, reach out via:
+```bash
+# Fork and clone the repo
+git checkout -b feature/your-feature-name
+# Make your changes and commit
+git commit -m "Add your feature"
+git push origin feature/your-feature-name
+# Open a Pull Request
+```
 
-Email: arabiounerfan@gmail.com
-GitHub Issues: Create an issue in this repository.
+> For large features, please open an issue first to discuss your proposal.
 
-License
-This project is licensed under the MIT License.
+---
 
-⭐ Star this project on GitHub if you find it useful!
+## 📬 Contact
+
+* 📧 Email: [arabiounerfan@gmail.com](mailto:arabiounerfan@gmail.com)
+* 🐛 Issues: [Submit here](https://github.com/ErfanArabioun/DigiChat-Assistance/issues)
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
+
+---
+
+⭐️ *If you find this project useful, give it a star to support the work!*
