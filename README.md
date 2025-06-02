@@ -37,6 +37,7 @@ DigiChat-Assistance/
 │   └── FAQ_Dataset.xlsx            # Collected FAQs
 ├── Describtion/
 │   └── DigiChat Assistance.pdf     # Summary of all project
+│   └── DigiChat.ppx                # PowerPoin of Project
 ├── requirements.txt                # Dependencies
 ```
 
