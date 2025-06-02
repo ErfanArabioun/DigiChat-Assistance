@@ -1,46 +1,55 @@
 DigiChat Assistance
+
+![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
+![Streamlit](https://img.shields.io/badge/Streamlit-1.38.0-red.svg)
+![Selenium](https://img.shields.io/badge/Selenium-4.25.0-green.svg)
+![Transformers](https://img.shields.io/badge/Transformers-4.44.2-orange.svg)
+![PyTorch](https://img.shields.io/badge/PyTorch-2.4.1-blue.svg)
+
  
-Welcome to DigiChat Assistance, an innovative project designed to provide automated, intelligent answers to frequently asked questions (FAQs) from Digikala, Iran's leading e-commerce platform. Powered by web scraping, natural language processing (NLP), and a user-friendly Streamlit web application, this project leverages BERT-based embeddings to deliver accurate and relevant responses to customer queries in Persian.
-🚀 Project Overview
-DigiChat Assistance automates the process of answering customer questions by:
+Welcome to DigiChat Assistance, an intelligent tool designed to automate answering frequently asked questions (FAQs) from Digikala, Iran's leading e-commerce platform. Powered by web scraping, Persian NLP, and a sleek Streamlit web interface, this project uses BERT-based embeddings to provide accurate and instant responses to customer queries in Persian.
+Table of Contents
 
-Crawling FAQs: Scraping Digikala's FAQ pages to collect questions, answers, and related links.
-Keyword Extraction: Generating meaningful keywords from questions to enhance searchability.
-Interactive Web App: Providing a Streamlit-based interface where users can input questions and receive instant answers based on semantic similarity.
+Features
+Project Structure
+Prerequisites
+Installation
+Usage
+Technologies Used
+Future Improvements
+Contributing
+Contact
+License
 
-This project is perfect for anyone interested in NLP, web scraping, or building user-friendly applications for customer support automation.
-📂 Project Structure
+Features
+
+Web Scraping: Automatically collects FAQs, answers, and related links from Digikala's website.
+Keyword Extraction: Enhances searchability by extracting key terms from questions using a Persian BERT model.
+Semantic Search: Uses cosine similarity and BERT embeddings to find the most relevant answer to user queries.
+User-Friendly Interface: A Streamlit web app for seamless interaction, allowing users to input questions and receive instant answers.
+Persian Language Support: Tailored for Persian text processing with a custom stop words list and a Persian BERT model.
+
+Project Structure
 The project is organized into three main components:
+DigiChat-Assistance/
+├── Crawler/
+│   └── Digikala_FAQ_Crawler_FullExtraction.py  # Scrapes FAQs from Digikala
+├── Preprocessing/
+│   └── Keywords_Generating.py                  # Extracts keywords from questions
+├── App/
+│   ├── app.py                                 # Streamlit web application
+│   └── Embedding.py                           # Generates BERT embeddings
+├── Persian_Stop_Words.txt                     # Persian stop words for preprocessing
+├── FAQ_Dataset.xlsx                           # Generated FAQ data
+├── faq_embeddings.npy                         # Generated BERT embeddings
+└── requirements.txt                           # Project dependencies
 
-Crawler:
-
-Digikala_FAQ_Crawler_FullExtraction.py: Scrapes FAQs from Digikala's website using Selenium, storing questions, answers, categories, and links in a CSV file.
-
-
-Preprocessing:
-
-Keywords_Generating.py: Extracts keywords from FAQ questions using a BERT-based model (HooshvareLab/bert-fa-base-uncased) and Persian stop words for improved search functionality.
-
-
-App:
-
-Embedding.py: Generates BERT embeddings for FAQ questions, saved as a NumPy array for efficient retrieval.
-app.py: A Streamlit web application that allows users to input questions in Persian and receive the most relevant FAQ answer based on cosine similarity.
-
-
-
-Additional files:
-
-Persian_Stop_Words.txt: A comprehensive list of Persian stop words used for keyword extraction.
-FAQ_Dataset.xlsx (generated): Stores the scraped FAQ data.
-faq_embeddings.npy (generated): Stores precomputed BERT embeddings for FAQs.
-
-🛠️ Getting Started
 Prerequisites
 
-Python 3.8 or higher
+Python 3.8+
 Google Chrome (for Selenium web scraping)
-Dependencies listed in requirements.txt
+ChromeDriver compatible with your Chrome version
+Internet connection for scraping and model downloads
 
 Installation
 
@@ -53,60 +62,70 @@ Install dependencies:
 pip install -r requirements.txt
 
 
-Download and install the ChromeDriver compatible with your Chrome version for the crawler.
+Install ChromeDriver:
+
+Download the appropriate ChromeDriver version for your Chrome browser.
+Place it in your system PATH or specify its location in Digikala_FAQ_Crawler_FullExtraction.py.
+
 
 
 Usage
 
-Collect FAQs:Run the crawler to scrape Digikala's FAQs:
+Collect FAQs:Scrape Digikala's FAQs:
 python Crawler/Digikala_FAQ_Crawler_FullExtraction.py
 
-This generates DIGIKALA_FAQ_ALL.csv.
+Output: DIGIKALA_FAQ_ALL.csv
 
 Generate Keywords:Extract keywords from questions:
 python Preprocessing/Keywords_Generating.py
 
-This generates DIGIKALA_FAQ_KEYWORDS.csv.
+Output: DIGIKALA_FAQ_KEYWORDS.csv
 
 Create Embeddings:Generate BERT embeddings for FAQs:
 python App/Embedding.py
 
-This generates faq_embeddings.npy.
+Output: faq_embeddings.npy
 
 Run the Web App:Launch the Streamlit app:
 streamlit run App/app.py
 
-Open the provided URL in your browser, enter a question in Persian, and get the most relevant answer!
+Open the provided URL (e.g., http://localhost:8501) in your browser, enter a Persian question, and get the most relevant answer.
 
 
-📊 Example Output
-User Input: "چگونه کیف پول دیجی‌کالا را فعال کنم؟"Output: The app returns the most relevant FAQ answer, such as:"برای فعال‌سازی کیف پول دیجی‌کالا، ابتدا وارد حساب کاربری خود شوید و از منوی حساب کاربری، گزینه کیف پول را انتخاب کنید..."(along with any related links, if available).
-🛠️ Technologies Used
+Technologies Used
 
-Python: Core programming language.
-Selenium: For web scraping Digikala's FAQ pages.
-Transformers (Hugging Face): For BERT-based NLP (HooshvareLab/bert-fa-base-uncased).
+Python 3.8+: Core programming language.
+Selenium: For scraping Digikala's FAQ pages.
+Transformers (Hugging Face): Persian BERT model (HooshvareLab/bert-fa-base-uncased) for NLP tasks.
+PyTorch: Backend for running BERT models.
 Streamlit: For building the interactive web application.
-Pandas & NumPy: For data handling and processing.
+Pandas & NumPy: For data manipulation and storage.
 Scikit-learn: For cosine similarity calculations.
-Torch: For running BERT models.
 
-📈 Future Improvements
+Future Improvements
 
-Add support for multi-lingual FAQs.
-Enhance the UI with advanced styling and visualizations.
-Optimize embedding generation for faster response times.
-Integrate real-time FAQ updates from Digikala's website.
+Support for multi-lingual FAQ processing.
+Enhanced UI with advanced styling and visualizations.
+Real-time FAQ updates from Digikala's website.
+Optimization of embedding generation for faster response times.
 
-🤝 Contributing
-Contributions are welcome! Please fork the repository, create a new branch, and submit a pull request with your improvements. For major changes, open an issue first to discuss your ideas.
-📜 License
+Contributing
+We welcome contributions! To contribute:
+
+Fork the repository.
+Create a new branch (git checkout -b feature/your-feature).
+Make your changes and commit (git commit -m "Add your feature").
+Push to the branch (git push origin feature/your-feature).
+Open a Pull Request.
+
+For major changes, please open an issue first to discuss your ideas.
+Contact
+For questions or feedback, reach out via:
+
+Email: arabiounerfan@gmail.com
+GitHub Issues: Create an issue in this repository.
+
+License
 This project is licensed under the MIT License.
-🙌 Acknowledgments
 
-Digikala for providing the FAQ data source.
-HooshvareLab for the Persian BERT model.
-Streamlit for the awesome web app framework.
-
-
-⭐ If you find this project helpful, give it a star on GitHub!For questions or feedback, contact arabiounerfan@gmail.com or open an issue.
+⭐ Star this project on GitHub if you find it useful!
