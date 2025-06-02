@@ -27,13 +27,16 @@ DigiChat-Assistance/
 ├── App/
 │   ├── app.py                      # Streamlit web app
 │   └── Embedding.py                # BERT embedding generator
+│   └── faq_embeddings.npy          # BERT-based semantic vectors              
 ├── Crawler/
 │   └── Digikala_FAQ_Crawler_FullExtraction.py
 ├── Preprocessing/
 │   └── Keywords_Generating.py      # Extracts keywords from FAQs
-├── Persian_Stop_Words.txt          # Persian stopwords for preprocessing
-├── FAQ_Dataset.xlsx                # Collected FAQs
-├── faq_embeddings.npy              # BERT-based semantic vectors
+│   └── Persian_Stop_Words.txt      # Persian stopwords for preprocessing
+├── Dataset/
+│   └── FAQ_Dataset.xlsx            # Collected FAQs
+├── Describtion/
+│   └── DigiChat Assistance.pdf     # Summary of all project
 ├── requirements.txt                # Dependencies
 ```
 
